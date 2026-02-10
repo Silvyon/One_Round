@@ -36,7 +36,7 @@ public class PlayerShooting : MonoBehaviour
     {
         bulletOrigin = this.transform;
         GameObject bullet = Instantiate(bulletPrefab, bulletOrigin.position, Quaternion.identity);
-        bullet.GetComponent<Rigidbody2D>().linearVelocity = bulletSpeed * movementScript.lastMoveInput;
+        bullet.GetComponent<Rigidbody2D>().linearVelocity = rBody.linearVelocity + bulletSpeed * movementScript.lastMoveInput;
 
     }
 }

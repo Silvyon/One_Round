@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float movementSpeed = 5f;
+    public float movementSpeed = 100f;
 
     private Rigidbody2D rBody;
     private PlayerControls controls;
@@ -39,8 +39,10 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector2 newPos = rBody.position + moveInput * movementSpeed * Time.fixedDeltaTime;
-        rBody.MovePosition(newPos);
+        // Vector2 newPos = rBody.position + moveInput * movementSpeed * Time.fixedDeltaTime;
+        // rBody.MovePosition(newPos);
+
+        rBody.linearVelocity = moveInput * movementSpeed * Time.fixedDeltaTime;
     }
 }
 ;
