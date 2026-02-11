@@ -2,16 +2,14 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    public float maxFlyTimeSeconds = 1f;
     void Update()
     {
-        
+        if(maxFlyTimeSeconds <= 0)
+        {
+            ReturnToPlayer();
+        }        
+        maxFlyTimeSeconds -= Time.deltaTime;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -21,6 +19,10 @@ public class Bullet : MonoBehaviour
             
             other.GetComponent<Enemy>().TakeDamage(50);
 
+            ReturnToPlayer();
+        }
+        if (other.CompareTag("Walls"))
+        {
             ReturnToPlayer();
         }
     }
